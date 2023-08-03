@@ -16,10 +16,12 @@ class RunningService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when (intent?.action) {
             Actions.START.toString() -> {
+                timer.cancel()
                 start()
             }
 
             Actions.STOP.toString() -> {
+                timer.cancel()
                 stopSelf()
             }
         }
